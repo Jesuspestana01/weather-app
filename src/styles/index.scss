@@ -1,0 +1,9 @@
+@import 'bootstrap/scss/bootstrap';
+
+.transparent-bg {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
