@@ -4,20 +4,22 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Añadimos las nuevas deprecaciones que reporta Bootstrap
+        silenceDeprecations: [
+          'legacy-js-api', 
+          'import', 
+          'if-function', 
+          'global-builtin', 
+          'color-functions'
+        ], 
+      },
+    },
+  },
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-  css: {
-    preprocessorOptions: {
-       scss: {
-         silenceDeprecations: [
-           'import',
-           'mixed-decls',
-           'color-functions',
-           'global-builtin',
-         ],
-       },
-    },
- },
 })
