@@ -1,4 +1,16 @@
 @import 'bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.text-black {
+  color: #2B2C2D !important;
+}
 
 .transparent-bg {
   background-color: rgba(255, 255, 255, 0.75) !important;
@@ -6,6 +18,10 @@
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease-in-out;
+}
+
+.smc-shadow {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .sm-shadow {
