@@ -1,10 +1,20 @@
+import { useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router"
 import HomeView from "./views/HomeView"
-import { Navbar } from "./components/ui/Navbar"
 import WeatherView from "./views/WeatherView"
-import { Footer } from "./components/ui/Footer"
+import { Navbar } from "./components/ui/Navbar"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 const Layout = () => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true
+        })
+    }, [])
+    
     return (
         <BrowserRouter>
         <Navbar/>

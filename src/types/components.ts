@@ -12,5 +12,8 @@ export interface MoreInfoCardsProps {
     description3: any;
     description4: any;
   }
+}
 
+export interface SearchBarProps {
+  placeholder: string;
 }

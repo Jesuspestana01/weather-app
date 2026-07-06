@@ -1,4 +1,5 @@
 import { Footer } from "../components/ui/Footer";
+import { SearchBar } from "../components/ui/SearchBar";
 
 const HomeView = () => {
   return (
@@ -14,11 +15,10 @@ const HomeView = () => {
             A simple, responsive weather dashboard webapp with React and
             Bootstrap, featuring real-time data fetching and global city search.
           </p>
+        <SearchBar placeholder="Search a city..."/>
         </div>
       </div>
-      <footer className="text-center text-muted small py-2">
-        <p className="mb-0">Developed by <strong>Jesus Pestana</strong> © 2026</p>
-      </footer>
+      <Footer/>
     </div>
   );
 };

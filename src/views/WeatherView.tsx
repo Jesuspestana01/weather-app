@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getWeatherByCity } from "../services/weatherService";
-import { BigCard } from "../components/WeatherCard";
+import { WeatherCard } from "../components/WeatherCard";
 import { MoreInfoCards } from "../components/MoreInfoCards";
+import { Footer } from "../components/ui/Footer";
 
 const WeatherView = () => {
-
-  
   const { city } = useParams<{ city: string }>();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [weatherInfo, setWeatherInfo] = useState<any>(null);
-  
+
   useEffect(() => {
     const fetchWeather = async () => {
       if (!city) return;
-      
+
       setLoading(true);
       setError(null);
       try {
@@ -30,56 +29,68 @@ const WeatherView = () => {
     };
     fetchWeather();
   }, [city]);
-  
+
   const moreInfoTitles = {
     title1: "Feels Like",
     title2: "Humidity",
     title3: "Pressure",
-    title4: "Wind"
-  }
+    title4: "Wind",
+  };
 
   const moreInfoDescriptions = {
     description1: weatherInfo?.weather?.main?.feels_like,
     description2: weatherInfo?.weather?.main?.humidity,
     description3: weatherInfo?.weather?.main?.pressure,
     description4: weatherInfo?.weather?.wind?.speed,
-  }
+  };
 
   if (loading)
     return (
-      <div className="container mt-5" style={{ height: "20rem" }}>
-        <div className="row justify-content-center align-items-center">
-          <div className="col">
-            <span className="loader"></span>
-          </div>
+      <div className="container d-flex flex-column align-items-center vh-100 text-center p-3">
+        <div className="my-auto">
+          <span className="loader"></span>
         </div>
+        <Footer/>
       </div>
     );
-
+  
   if (error)
     return (
-      <div className="container" style={{ height: "20rem" }}>
-        <div className="row justify-content-center align-items-center">
+      <div className="container d-flex flex-column align-items-center vh-100 text-center p-3">
+        <div className="my-auto px-3">
+          <h1 className="h3 text-danger">Could not find weather information for that city.</h1>
+          <p className="text-muted">Please check the spelling and try again.</p>
+        </div>
+        <Footer/>
+      </div>
+    );
+  
+  return (
+    <div className="container d-flex flex-column vh-100 p-3">
+      <div className="my-auto w-100">
+        <div className="row mb-4">
           <div className="col">
-            <h1>Could not find weather information for that city.</h1>
+            <WeatherCard
+              name={weatherInfo?.location?.name}
+              country={weatherInfo?.location?.country}
+              weather={weatherInfo?.weather?.weather}
+              main={weatherInfo?.weather?.main}
+            />
+          </div>
+        </div>
+  
+        <div className="row">
+          <div className="col">
+            <MoreInfoCards
+              titles={moreInfoTitles}
+              descriptions={moreInfoDescriptions}
+            />
           </div>
         </div>
       </div>
-    );
-
-  return (<div className="container">
-        <div className="row">
-            <div className="col">
-                <BigCard name={weatherInfo?.location?.name} country={weatherInfo?.location?.country} weather={weatherInfo?.weather?.weather} main={weatherInfo?.weather?.main} />
-            </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <MoreInfoCards titles={moreInfoTitles} descriptions={moreInfoDescriptions}/>
-          </div>
-        </div>
-  </div>);
+        <Footer/>
+    </div>
+  );
 };
 
 export default WeatherView;
