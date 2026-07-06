@@ -1,15 +1,16 @@
-@import 'bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 * {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
+  transition: background 1s ease;
 }
 
 .text-black {
-  color: #2B2C2D !important;
+  color: #2b2c2d !important;
 }
 
 .transparent-bg {
@@ -25,7 +26,8 @@
 }
 
 .sm-shadow {
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
 .n-shadow {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -46,7 +48,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
   animation: rotation 1s linear infinite;
 }
 .loader::after {
-  content: '';
+  content: "";
   box-sizing: border-box;
   position: absolute;
   left: 50%;
@@ -70,6 +72,13 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
 
 .search-bar {
   border-radius: 30px 0px 0px 30px;
-  border:none;
+  border: none;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.bg-blur {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }

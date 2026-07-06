@@ -15,17 +15,18 @@ export const Navbar = () => {
   return (
     <>
       {location.pathname !== "/" ? (
-        <header className="container py-4 fixed-top">
+        <header className="container-fluid py-4 fixed-top bg-blur">
+          <div className="container">
           <div className="row d-flex justify-content-evenly align-items-center">
             <div className="col-6 col-md-6">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-light"
                 onClick={() => navigate("/")}
               >
                 Home
               </button>
-              <a href="https://github.com/Jesuspestana01/weather-app" target="_blank" type="button" className="btn btn-outline-primary ms-2">
+              <a href="https://github.com/Jesuspestana01/weather-app" target="_blank" type="button" className="btn btn-outline-light ms-2">
                 Github
               </a>
             </div>
@@ -49,12 +50,13 @@ export const Navbar = () => {
 
                 <button
                   type="submit"
-                  className="btn btn-outline-primary ms-1 d-none d-md-block"
+                  className="btn btn-outline-light ms-1 d-none d-md-block"
                 >
                   Search
                 </button>
               </form>
             </div>
+          </div>
           </div>
         </header>
       ) : (

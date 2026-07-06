@@ -3,7 +3,7 @@ import { SearchBar } from "../components/ui/SearchBar";
 
 const HomeView = () => {
   return (
-    <div className="d-flex flex-column justify-content-between vh-100 p-3">
+    <div className="d-flex flex-column justify-content-between vh-100 p-3 bg-white">
       <div className="invisible">Header Spacer</div>
       <div className="d-flex justify-content-center align-items-center">
         <div

@@ -9,7 +9,7 @@ export const MoreInfoCards = ({ titles, descriptions }: MoreInfoCardsProps) => {
           <div className="card mx-auto py-4 border-0 smc-shadow" style={{ width: "18rem" }}>
             <div className="card-body">
               <h5 className="card-title fs-4">{titles.title1}</h5>
-              <p className="card-text fs-5">{descriptions.description1}</p>
+              <p className="card-text fs-5">{Math.ceil(descriptions.description1)}°</p>
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@ export const MoreInfoCards = ({ titles, descriptions }: MoreInfoCardsProps) => {
           <div className="card mx-auto py-4 border-0 smc-shadow" style={{ width: "18rem" }}>
             <div className="card-body">
               <h5 className="card-title fs-4">{titles.title2}</h5>
-              <p className="card-text fs-5">{descriptions.description2} </p>
+              <p className="card-text fs-5">{descriptions.description2}% </p>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ export const MoreInfoCards = ({ titles, descriptions }: MoreInfoCardsProps) => {
           <div className="card mx-auto py-4 border-0 smc-shadow" style={{ width: "18rem" }}>
             <div className="card-body">
               <h5 className="card-title fs-4">{titles.title3}</h5>
-              <p className="card-text fs-5">{`${descriptions.description3}`} / </p>
+              <p className="card-text fs-5">{`${descriptions.description3}`}hPa </p>
             </div>
           </div>
         </div>

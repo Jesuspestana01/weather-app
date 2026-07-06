@@ -4,6 +4,7 @@ import { getWeatherByCity } from "../services/weatherService";
 import { WeatherCard } from "../components/WeatherCard";
 import { MoreInfoCards } from "../components/MoreInfoCards";
 import { Footer } from "../components/ui/Footer";
+import { backgroundWeather } from "../utility/weatherBackground"; // Importamos el mapa de fondos
 
 const WeatherView = () => {
   const { city } = useParams<{ city: string }>();
@@ -12,6 +13,18 @@ const WeatherView = () => {
   const [error, setError] = useState<string | null>(null);
   const [weatherInfo, setWeatherInfo] = useState<any>(null);
 
+  // Get weather to set background
+  useEffect(() => {
+    const climateState = weatherInfo?.weather?.weather[0]?.main?.toLowerCase() || "default";
+    const currentBackground = backgroundWeather[climateState] || backgroundWeather.default;
+
+    document.body.style.background = currentBackground;
+    document.body.style.transition = "background 0.5s ease";
+    document.body.style.minHeight = "100vh";
+    document.body.style.margin = "0";
+  }, [weatherInfo]); 
+
+  // fetch weather info to change background
   useEffect(() => {
     const fetchWeather = async () => {
       if (!city) return;
@@ -46,9 +59,9 @@ const WeatherView = () => {
 
   if (loading)
     return (
-      <div className="container d-flex flex-column align-items-center vh-100 text-center p-3">
+      <div className="container d-flex flex-column align-items-center vh-100 text-center p-3 text-white">
         <div className="my-auto">
-          <span className="loader"></span>
+          <span className="loader" style={{ borderColor: "rgba(255,255,255,0.3)", borderTopColor: "#fff" }}></span>
         </div>
         <Footer/>
       </div>
@@ -56,17 +69,17 @@ const WeatherView = () => {
   
   if (error)
     return (
-      <div className="container d-flex flex-column align-items-center vh-100 text-center p-3">
+      <div className="container d-flex flex-column align-items-center vh-100 text-center p-3 text-white">
         <div className="my-auto px-3">
-          <h1 className="h3 text-danger">Could not find weather information for that city.</h1>
-          <p className="text-muted">Please check the spelling and try again.</p>
+          <h1 className="h3 text-white">Could not find weather information for that city.</h1>
+          <p className="lead">Please check the spelling and try again.</p>
         </div>
         <Footer/>
       </div>
     );
   
   return (
-    <div className="container d-flex flex-column vh-100 p-3">
+    <div className="container d-flex flex-column vh-100 p-3 text-white">
       <div className="my-auto w-100">
         <div className="row mb-4">
           <div className="col">
@@ -88,7 +101,7 @@ const WeatherView = () => {
           </div>
         </div>
       </div>
-        <Footer/>
+      <Footer/>
     </div>
   );
 };
