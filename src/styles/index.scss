@@ -82,3 +82,7 @@
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
+
+.weather-card-container {
+  view-transition-name: main-weather-card;
+}

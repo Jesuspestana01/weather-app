@@ -1,13 +1,80 @@
-import {
-  CloudIcon,
-  SunIcon,
-} from "@heroicons/react/20/solid";
+import { CloudIcon, SunIcon } from "@heroicons/react/20/solid";
 import type { WeatherData } from "../types/weather";
+import { backgroundWeather } from "../utils/weatherBackground";
 
-export const WeatherCard = ({ main, weather, name, country }: WeatherData) => {
+export const WeatherCard = ({
+  main,
+  weather,
+  name,
+  country,
+  skeleton = false,
+}: WeatherData) => {
+  if (skeleton) {
+    return (
+      <div
+        className="container w-100 text-white py-5 rounded-4 weather-card-container placeholder-glow"
+        style={{
+          background: "rgb(164, 167, 170)",
+          height: "398px",
+        }}
+      >
+        <div className="row justify-content-center">
+          <div className="col text-center">
+            <div className="d-flex justify-content-center mb-3">
+              <span
+                className="placeholder col-4 col-sm-3 bg-light rounded"
+                style={{ height: "2rem" }}
+              ></span>
+            </div>
 
+            <div className="d-flex justify-content-center align-items-center gap-3 my-3">
+              <span
+                className="placeholder col-3 col-sm-2 bg-light rounded"
+                style={{ height: "5rem" }}
+              ></span>
+              <span
+                className="placeholder bg-light rounded-circle"
+                style={{ width: "5.5rem", height: "5.5rem" }}
+              ></span>
+            </div>
+            <div className="d-flex justify-content-center gap-3 mb-2">
+              <span
+                className="placeholder col-3 col-sm-2 bg-light rounded"
+                style={{ height: "2rem" }}
+              ></span>
+              <span
+                className="placeholder col-3 col-sm-2 bg-light rounded"
+                style={{ height: "2rem" }}
+              ></span>
+            </div>
+            <div className="d-flex justify-content-center mb-2">
+              <span
+                className="placeholder col-3 col-sm-2 bg-light rounded"
+                style={{ height: "2rem" }}
+              ></span>
+            </div>
+            <div className="d-flex justify-content-center">
+              <span
+                className="placeholder col-5 col-sm-4 bg-light rounded"
+                style={{ height: "1.5rem" }}
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="container w-100 mt-5 text-white">
+    <div
+      data-aos="fade-down"
+      data-aos-delay="100"
+      className="container w-100 text-white py-5 rounded-4 weather-card-container smc-shadow"
+      style={{
+        background:
+          backgroundWeather[weather[0]?.main?.toLowerCase()] ||
+          backgroundWeather.default,
+      }}
+    >
       {/* country and city */}
       <div className="row justify-content-center">
         <div className="col">
@@ -25,12 +92,18 @@ export const WeatherCard = ({ main, weather, name, country }: WeatherData) => {
             data-aos-delay="250"
           >
             <p
+              data-aos="fade-down"
+              data-aos-delay="100"
               className="fw-bold text-white mb-0"
               style={{ fontSize: "5rem", lineHeight: "1" }}
             >
               {`${Math.ceil(main.temp)}°`}
             </p>
-            <div className="d-flex align-items-center">
+            <div
+              className="d-flex align-items-center"
+              data-aos="fade-down"
+              data-aos-delay="100"
+            >
               {weather[0]?.main?.toLowerCase() === "clouds" ? (
                 <CloudIcon
                   className="text-white"
@@ -92,6 +165,5 @@ export const WeatherCard = ({ main, weather, name, country }: WeatherData) => {
         </div>
       </div>
     </div>
-
   );
 };

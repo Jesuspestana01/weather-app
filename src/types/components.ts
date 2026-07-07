@@ -1,17 +1,16 @@
 export interface MoreInfoCardsProps {
-  titles: {
-    title1: string;
-    title2: string;
-    title3: string;
-    title4: string;
-  }
-
-  descriptions: {
-    description1: any;
-    description2: any;
-    description3: any;
-    description4: any;
-  }
+  weather: Array<{
+    main: string;
+    description: string;
+    icon: string;
+  }>;
+  skeleton: boolean;
+  data: Array<{
+    id: number;
+    title: string;
+    description: string;
+    symbol: string;
+  }>;
 }
 
 export interface SearchBarProps {

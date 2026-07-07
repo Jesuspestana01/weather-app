@@ -6,10 +6,13 @@ export interface GeoLocation {
 }
 
 export interface WeatherData {
+    skeleton: boolean;
     main: {
         temp: number;
         humidity: number;
         feels_like: number;
+        temp_min: number;
+        temp_max: number;
     };
     weather: Array<{
         main: string;
